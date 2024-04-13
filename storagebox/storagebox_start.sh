@@ -15,7 +15,7 @@ while true; do
         do
                 # Get current mountpoint info
                 IFS=$'\t';
-                read -r source target <<< "$line";
+                read -r source target map_uid map_gid <<< "$line";
 
                 # Check if is mounted
                 mountpoint "$target" &>/dev/null;
@@ -27,7 +27,7 @@ while true; do
                 # Mount if not mounted
                 echo "\"$target\" not mounted. Mounting from \"$source\".";
                 umount "$target" 2>/dev/null;
-                echo "$BOXPASS" | sshfs -o allow_other,password_stdin "$BOXADDR:$source" "$target";
+                echo "$BOXPASS" | sshfs -o "allow_other,password_stdin,idmap=user,uid=$map_uid,gid=$map_gid" "$BOXADDR:$source" "$target";
         done
 
         # Wait between iterations

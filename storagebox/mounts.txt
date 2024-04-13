@@ -1,1 +1,1 @@
-~/test-mount	/opt/test-mount
+~/test-mount	/opt/test-mount 0   0
