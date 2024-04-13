@@ -1,0 +1,11 @@
+[Unit]
+Description=External storage box mounter
+
+[Service]
+ExecStart=/root/storagebox/storagebox_start.sh
+ExecStop=/root/storagebox/storagebox_stop.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
