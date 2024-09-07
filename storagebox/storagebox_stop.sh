@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Login info
-BOXADDR="user@myexternalstorage.tld"
-BOXPASS="password"
-
 echo "Unmounting storage box."
 
 # Mounts data
